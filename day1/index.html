@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Pesan: {{message}}</h1>
+      <p>{{kata}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "l",
+          kata: "a",
+        },
+        beforeCreate() {
+          console.log("before create: " + "message = " + this.message);
+        },
+        created() {
+          console.log("after create: " + "message = " + this.message);
+          console.log(this.$data);
+        },
+        beforeMount() {
+          console.log("before mounted: " + "el = " + this.$el.textContent);
+        },
+        mounted() {
+          console.log("after mounted: " + "el = " + this.$el.textContent);
+        },
+        beforeUpdate() {
+          console.log("before update: " + "el = " + this.$el.textContent);
+        },
+        updated() {
+          console.log("after update: " + "el = " + this.$el.textContent);
+        },
+        beforeDestroy() {
+          console.log("before destroy");
+        },
+        destroyed() {
+          console.log("destroyed");
+        },
+        // data: {
+        //   nama: "Tsaqif",
+        //   age: "00",
+        //   gender: true,
+        //   hobby: ["coding", "sleeping"],
+        //   children: {
+        //     1: "Ammar",
+        //     2: "Faqih",
+        //     3: "Syammil",
+        //   },
+        // },
+      });
+      vm.$watch("message", (newValue, oldValue) => {
+        console.log(
+          "Var message diubah dari " + oldValue + " menjadi " + newValue
+        );
+      });
+      vm.$destroy();
+      vm.message = "Selamat Datang";
+    </script>
+  </body>
+</html>
